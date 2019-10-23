@@ -8,11 +8,7 @@ public class Mover : MonoBehaviour
     // Start is called before the first frame update
 
     // Variables
-    [SerializeField] Transform target;
     Ray lastRay;
-
-    // Cache
-
 
     void Start()
     {
@@ -26,7 +22,8 @@ public class Mover : MonoBehaviour
         {
             MoveToTarget();
         }
-        
+        UpdateAnimator();
+
     }
 
     private void MoveToTarget()
@@ -38,8 +35,13 @@ public class Mover : MonoBehaviour
         {
             GetComponent<NavMeshAgent>().SetDestination(hit.point);
         }
-        
-        
-        
+    }
+
+    private void UpdateAnimator()
+    {
+        Vector3 velocity = GetComponent<NavMeshAgent>().velocity;
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        float speed = localVelocity.z;
+        GetComponent<Animator>().SetFloat("ForwardSpeed", speed);
     }
 }
