@@ -9,7 +9,6 @@ namespace RPG.Core
         // Variable
         [SerializeField] Transform target;
 
-        // Update is called once per frame
         void Update()
         {
             UpdatePosition();
