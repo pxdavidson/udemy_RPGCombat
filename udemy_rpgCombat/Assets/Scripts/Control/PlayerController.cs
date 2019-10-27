@@ -52,7 +52,7 @@ namespace RPG.Control
                 if (target == null) continue;
                 if (Input.GetMouseButton(0))
                 {
-                    fighter.Attack(target);
+                    fighter.SetTarget(target);
                 }
                 return true;
             }

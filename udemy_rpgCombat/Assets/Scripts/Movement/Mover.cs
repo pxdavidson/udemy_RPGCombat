@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core;
-using RPG.Combat;
 
 namespace RPG.Movement
 {
-    public class Mover : MonoBehaviour
+    public class Mover : MonoBehaviour, IAction
     {
         // Cache
         NavMeshAgent navMeshAgent;
@@ -22,10 +21,14 @@ namespace RPG.Movement
             UpdateAnimator();
         }
 
+        public void Cancel()
+        {
+            MoveStop();
+        }
+
         public void MoveAction(Vector3 targetDestination)
         {
             GetComponent<ActionScheduler>().StartAction(GetComponent<Mover>());
-            GetComponent<Fighter>().Nulltarget();
             MoveToTarget(targetDestination);
         }
 
