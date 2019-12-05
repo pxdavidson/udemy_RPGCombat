@@ -10,7 +10,7 @@ namespace RPG.Combat
     public class Fighter : MonoBehaviour, IAction
     {
         // Variables
-        Transform target;
+        Health target;
         Mover mover;
         [SerializeField] float weaponRange = 1f;
         [SerializeField] float weaponDamage = 5;
@@ -24,9 +24,24 @@ namespace RPG.Combat
 
         private void Update()
         {
-            if (!target) return;
             timeSinceLastAttack += Time.deltaTime;
-            MoveWithinRange();
+            if (ValidTarget())
+            {
+                MoveWithinRange();
+            }
+        }
+
+        public bool ValidTarget()
+        {
+            if (!target || target.ReturnAliveState() == false)
+            {
+                GetComponent<Animator>().SetTrigger("stopattacking");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public void Cancel()
@@ -38,16 +53,16 @@ namespace RPG.Combat
         public void SetTarget(CombatTarget combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(GetComponent<Fighter>());
-            target = combatTarget.transform;
+            target = combatTarget.GetComponent<Health>();
         }
 
         // Moves within range of weapon and stops
         private void MoveWithinRange()
         {
-            bool isInRange = Vector3.Distance(transform.position, target.position) <= weaponRange;
+            bool isInRange = Vector3.Distance(transform.position, target.transform.position) <= weaponRange;
             if (!isInRange)
             {
-                mover.MoveToTarget(target.position);
+                mover.MoveToTarget(target.transform.position);
             }
             else
             {
@@ -61,6 +76,7 @@ namespace RPG.Combat
 
         private void AttackTarget()
         {
+            transform.LookAt(target.transform);
             GetComponent<Animator>().SetTrigger("attack");
             timeSinceLastAttack = 0f;
         }
@@ -74,7 +90,7 @@ namespace RPG.Combat
         // Animation event
         void Hit()
         {
-            target.GetComponent<Health>().SetHealth(weaponDamage);
+            target.SetHealth(weaponDamage);
         }
     }
 }

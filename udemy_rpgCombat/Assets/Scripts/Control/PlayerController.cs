@@ -54,6 +54,7 @@ namespace RPG.Control
                 {
                     fighter.SetTarget(target);
                 }
+                if (fighter.ValidTarget() == false) continue;
                 return true;
             }
             return false;

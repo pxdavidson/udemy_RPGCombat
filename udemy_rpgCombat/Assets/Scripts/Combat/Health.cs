@@ -32,5 +32,10 @@ namespace RPG.Combat
             GetComponent<Animator>().SetTrigger("die");
             isAlive = false;
         }
+
+        public bool ReturnAliveState()
+        {
+            return isAlive;
+        }
     }
 }
