@@ -521,7 +521,8 @@ PrefabInstance:
       propertyPath: health
       value: 100
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8832236199578000219, guid: 8026d00da770fe24c887cc1a6ab47055, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8026d00da770fe24c887cc1a6ab47055, type: 3}
 --- !u!1001 &455094294
 PrefabInstance:
@@ -812,6 +813,11 @@ PrefabInstance:
       propertyPath: health
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 7456925200060799675, guid: 819a4a61e6bd0064eafbfe75c0b2656a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 819a4a61e6bd0064eafbfe75c0b2656a, type: 3}
 --- !u!4 &859740758 stripped
@@ -1078,7 +1084,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.7
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1472,6 +1478,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7456925200060799675, guid: 819a4a61e6bd0064eafbfe75c0b2656a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 819a4a61e6bd0064eafbfe75c0b2656a, type: 3}
 --- !u!1001 &1455974773
@@ -1801,6 +1812,11 @@ PrefabInstance:
         type: 3}
       propertyPath: health
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456925200060799675, guid: 819a4a61e6bd0064eafbfe75c0b2656a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3219924658293918411, guid: 819a4a61e6bd0064eafbfe75c0b2656a, type: 3}

@@ -3,13 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Combat
+namespace RPG.Core
 {
     public class Health : MonoBehaviour
     {
         // Variables
         [SerializeField] float health;
         bool isAlive = true;
+
+        // Cache
+        ActionScheduler actionscheduler;
+
+        // Called on Start
+        private void Start()
+        {
+            actionscheduler = GetComponent<ActionScheduler>();
+        }
 
         public void SetHealth(float damage)
         {
@@ -31,9 +40,10 @@ namespace RPG.Combat
         {
             GetComponent<Animator>().SetTrigger("die");
             isAlive = false;
+            actionscheduler.StopActions();
         }
 
-        public bool ReturnAliveState()
+        public bool IsAlive()
         {
             return isAlive;
         }

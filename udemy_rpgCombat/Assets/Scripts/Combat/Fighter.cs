@@ -11,17 +11,23 @@ namespace RPG.Combat
     {
         // Variables
         Health target;
-        Mover mover;
         [SerializeField] float weaponRange = 1f;
         [SerializeField] float weaponDamage = 5;
         [SerializeField] float timeBetweenAttacks = 1f;
         float timeSinceLastAttack;
 
+        // Cache
+        Mover mover;
+        Animator animator;
+
+        // Called at Start
         private void Start()
         {
             mover = GetComponent<Mover>();
+            animator = GetComponent<Animator>();
         }
 
+        // Updated every frame
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
@@ -31,9 +37,10 @@ namespace RPG.Combat
             }
         }
 
+        // Checks if the target is null, and if not null, is it "alive". Returns true if neither condition is met
         public bool ValidTarget()
         {
-            if (!target || target.ReturnAliveState() == false)
+            if (!target || target.IsAlive() == false)
             {
                 return false;
             }
@@ -43,18 +50,19 @@ namespace RPG.Combat
             }
         }
 
+        // IAction method called to clear the target variable and reset animation
         public void Cancel()
         {
             NullTarget();
-            GetComponent<Animator>().ResetTrigger("attack");
-            GetComponent<Animator>().SetTrigger("stopattacking");
+            animator.ResetTrigger("attack");
+            animator.SetTrigger("stopattacking");
         }
 
-        // Sets the target to be attacked
-        public void SetTarget(CombatTarget combatTarget)
+        // Sets the ActionScheduler for combat then sets the global target variable
+        public void SetTarget(GameObject targetGameObject)
         {
             GetComponent<ActionScheduler>().StartAction(GetComponent<Fighter>());
-            target = combatTarget.GetComponent<Health>();
+            target = targetGameObject.GetComponent<Health>();
         }
 
         // Moves within range of weapon and stops
@@ -78,8 +86,8 @@ namespace RPG.Combat
         private void AttackTarget()
         {
             transform.LookAt(target.transform);
-            GetComponent<Animator>().ResetTrigger("stopattacking");
-            GetComponent<Animator>().SetTrigger("attack");
+            animator.ResetTrigger("stopattacking");
+            animator.SetTrigger("attack");
             timeSinceLastAttack = 0f;
         }
 
@@ -90,8 +98,9 @@ namespace RPG.Combat
         }
 
         // Animation event
-        void Hit()
+        public void Hit()
         {
+            if (target == null) return;
             target.SetHealth(weaponDamage);
         }
     }

@@ -10,22 +10,29 @@ namespace RPG.Movement
     {
         // Cache
         NavMeshAgent navMeshAgent;
+        Health health;
 
+        // Called on Start
         private void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            health = GetComponent<Health>();
         }
 
+        // Called once per frame
         void Update()
         {
+            navMeshAgent.enabled = health.IsAlive();
             UpdateAnimator();
         }
 
+        // Called from ActionScheduler.cs
         public void Cancel()
         {
             MoveStop();
         }
 
+        // Sets ActionScheduler to Move
         public void MoveAction(Vector3 targetDestination)
         {
             GetComponent<ActionScheduler>().StartAction(GetComponent<Mover>());
