@@ -13,11 +13,12 @@ GameObject:
   - component: {fileID: 5463756526750048696}
   - component: {fileID: 852713645}
   - component: {fileID: 6005882144435353386}
+  - component: {fileID: 4087089412939167367}
   - component: {fileID: 1396814283}
   - component: {fileID: 5463756526750048699}
   - component: {fileID: 106923079869060393}
-  - component: {fileID: 1366562361192777047}
   - component: {fileID: 5424119812332875726}
+  - component: {fileID: 1366562361192777047}
   - component: {fileID: 3160736171071401281}
   m_Layer: 0
   m_Name: Character
@@ -132,6 +133,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &4087089412939167367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463756526750048678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31f346b3e7b90f4590af835957a287a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1396814283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +184,18 @@ MonoBehaviour:
   weaponRange: 1
   weaponDamage: 5
   timeBetweenAttacks: 1
+--- !u!114 &5424119812332875726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463756526750048678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2529778498bc64ea0aa73f9b1c7f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1366562361192777047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,18 +209,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
---- !u!114 &5424119812332875726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5463756526750048678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e2529778498bc64ea0aa73f9b1c7f74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3160736171071401281
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,7 +35,6 @@ namespace RPG.Combat
         {
             if (!target || target.ReturnAliveState() == false)
             {
-                GetComponent<Animator>().SetTrigger("stopattacking");
                 return false;
             }
             else
@@ -47,6 +46,8 @@ namespace RPG.Combat
         public void Cancel()
         {
             NullTarget();
+            GetComponent<Animator>().ResetTrigger("attack");
+            GetComponent<Animator>().SetTrigger("stopattacking");
         }
 
         // Sets the target to be attacked
@@ -77,6 +78,7 @@ namespace RPG.Combat
         private void AttackTarget()
         {
             transform.LookAt(target.transform);
+            GetComponent<Animator>().ResetTrigger("stopattacking");
             GetComponent<Animator>().SetTrigger("attack");
             timeSinceLastAttack = 0f;
         }
