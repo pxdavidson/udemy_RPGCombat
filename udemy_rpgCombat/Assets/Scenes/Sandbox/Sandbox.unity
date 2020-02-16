@@ -246,10 +246,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Tree_03 (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 190414, guid: 653c97bd88b4b084d87714542c43ee5a, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 496924, guid: 653c97bd88b4b084d87714542c43ee5a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.5062466
@@ -733,7 +729,7 @@ Transform:
   - {fileID: 2133430490}
   - {fileID: 122182280}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &808486785 stripped
 Transform:
@@ -1461,7 +1457,7 @@ PrefabInstance:
     - target: {fileID: 7456925200060799674, guid: 819a4a61e6bd0064eafbfe75c0b2656a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7456925200060799674, guid: 819a4a61e6bd0064eafbfe75c0b2656a,
         type: 3}
